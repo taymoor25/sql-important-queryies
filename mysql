@@ -1,1 +1,3 @@
-   $query->orderByRaw('CAST(room_id as UNSIGNED),room_id');
+  
+  // code to sort alphanumeric column
+  $query->orderByRaw('CAST(room_id as UNSIGNED),room_id');
