@@ -1,6 +1,6 @@
   
   // code to sort alphanumeric column
-  $query->orderByRaw('CAST(room_id as UNSIGNED),room_id');
+  select * from `rooms` order by CAST(room_id as UNSIGNED) DESC , room_id DESC limit 10 offset 10
   
   SELECT a.*  FROM address a INNER JOIN ( SELECT EmployeeID, max( Resident ) AS latest FROM address GROUP BY EmployeeID ) a2 ON a.Resident = a2.latest AND a.EmployeeID = a2.EmployeeID ) as a'), function ($join) {
                 $join->on('employees.EmployeeID', 'a.EmployeeID
