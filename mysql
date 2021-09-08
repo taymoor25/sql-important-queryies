@@ -4,3 +4,12 @@
   
   SELECT a.*  FROM address a INNER JOIN ( SELECT EmployeeID, max( Resident ) AS latest FROM address GROUP BY EmployeeID ) a2 ON a.Resident = a2.latest AND a.EmployeeID = a2.EmployeeID ) as a'), function ($join) {
                 $join->on('employees.EmployeeID', 'a.EmployeeID
+                
+                
+                select t.username, t.date, t.value
+from MyTable t
+inner join (
+    select username, max(date) as MaxDate
+    from MyTable
+    group by username
+) tm on t.username = tm.username and t.date = tm.MaxDate
