@@ -13,3 +13,17 @@ inner join (
     from MyTable
     group by username
 ) tm on t.username = tm.username and t.date = tm.MaxDate
+
+// query to get the duplicates records in datatabse 
+
+SELECT a.*
+FROM food a
+JOIN (SELECT Location,FoodCategory,captured_date,Images, COUNT(*)
+FROM food 
+GROUP BY Location,FoodCategory,captured_date,Images  
+HAVING count(*) > 1 ) b
+ON a.Location = b.Location
+AND a.FoodCategory = b.FoodCategory
+AND a.Images = b.Images
+AND a.captured_date = b.captured_date
+ORDER BY a.Location
